@@ -9,11 +9,7 @@ class DatabaseSeeder extends Seeder {
      * @return void
      */
     public function run() {
-        factory(\App\User::class, 10)->create();
-        \App\User::create([
-            'name' => 'Kliko Atanasov',
-            'email'=> 'kliko.atanasov@gmail.com',
-            'password' => \Illuminate\Support\Facades\Hash::make('123456')
-        ]);
+        factory(\App\Models\User::class, 10)->create();
+        factory(\App\Models\Book::class, 10)->create();
     }
 }
