@@ -3,16 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::get('/test', function () {
-    dd(phpinfo());
-    return response()->json([
-        'user' => [
-            'firstName'=> 'Kliko',
-            'lastName' => 'Atanasov'
-        ]
-    ]);
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('/books', 'BookController@index');
 });
