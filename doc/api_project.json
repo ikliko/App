@@ -1,6 +1,6 @@
 {
   "title": "App API",
-  "url": "http://localhost:8000/api/",
+  "url": "http://localhost:8000/",
   "name": "",
   "version": "0.0.0",
   "description": "",
@@ -9,7 +9,7 @@
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2017-04-08T15:58:45.513Z",
+    "time": "2017-04-09T19:46:07.368Z",
     "url": "http://apidocjs.com",
     "version": "0.17.5"
   }

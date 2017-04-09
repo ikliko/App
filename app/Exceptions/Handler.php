@@ -42,6 +42,8 @@ class Handler extends ExceptionHandler {
      */
     public function render($request, Exception $exception) {
         switch (get_class($exception)) {
+            case 'Illuminate\Database\Eloquent\ModelNotFoundException':
+                return response()->json(['type' => 'notFound'], config('httpStatus.notFound'));
             default:
                 $response = [
                     'message' => $exception->getMessage(),
