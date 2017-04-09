@@ -1,18 +1,19 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::get('/test', function () {
-    dd(phpinfo());
-    return response()->json([
-        'user' => [
-            'firstName'=> 'Kliko',
-            'lastName' => 'Atanasov'
-        ]
-    ]);
+Route::group(['middleware' => ['auth:api', 'bindings']], function () {
+    Route::group(['prefix' => '/books'], function () {
+        /***
+         * @apiGroup Books
+         * @api {get} books List All Books
+         *
+         * @apiHeader {Bearer} Authorization Authorize user
+         */
+        Route::get('/', 'BookController@index');
+        Route::get('{book}', 'BookController@view');
+        Route::post('/', 'BookController@create');
+        Route::put('{book}', 'BookController@update');
+        Route::delete('{book}', 'BookController@delete');
+    });
 });
