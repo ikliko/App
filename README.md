@@ -10,8 +10,15 @@ This is RestAPI with OAuth2 authentication.
 
 Run following commands: 
 - > composer install
-- > Copy file ```.env.example``` and create ```.env``` file. Then Configure your database
+- > Copy file ```.env.example``` and create ```.env``` file. Then Configure your environment
+- > php artisan key:generate
 - > php artisan migrate --seed
+- > php artisan passport:install
+- > apidoc
+
+#### See API documentation
+Open doc folder in app root directory and run index.html with server
+Start Api with ```php artisan serve```
 
 
 # License
