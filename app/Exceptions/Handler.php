@@ -41,7 +41,24 @@ class Handler extends ExceptionHandler {
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception) {
-        return parent::render($request, $exception);
+        switch (get_class($exception)) {
+            default:
+                $response = [
+                    'message' => $exception->getMessage(),
+                    'errorCode' => $exception->getCode(),
+                ];
+
+                if (config('app.debug')) {
+                    $response['file'] = $exception->getFile();
+                    $response['line'] = $exception->getLine();
+                    $response['trace'] = $exception->getTrace();
+                }
+
+                return response()->json(
+                    $response,
+                    config('httpStatus.badRequest')
+                );
+        }
     }
 
     /**
@@ -52,11 +69,6 @@ class Handler extends ExceptionHandler {
      * @return \Illuminate\Http\Response
      */
     protected function unauthenticated($request, AuthenticationException $exception) {
-//        dd($request->wantsJson());
-//        if ($request->expectsJson()) {
-            return response()->json(['error' => 'Unauthenticated.'], 401);
-//        }
-//
-//        return redirect()->guest(route('login'));
+        return response()->json(['error' => 'Unauthenticated.'], 401);
     }
 }
