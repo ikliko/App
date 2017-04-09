@@ -348,7 +348,7 @@ define([
                 case DIFF_EQUAL:
                     html[x] = '<span>' + text + '</span>';
                     break;
-            }
+        }
         }
         return html.join('');
     };

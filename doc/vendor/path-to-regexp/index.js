@@ -77,7 +77,7 @@ function regexpToRegexp(path, keys) {
                 optional: false,
                 repeat: false
             });
-        }
+    }
     }
 
     return attachKeys(path, keys);
@@ -140,7 +140,7 @@ function replacePath(path, keys) {
 
         if (optional) {
             return '(?:' + prefix + '(' + capture + '))?';
-        }
+    }
 
         // Basic parameter support.
         return prefix + '(' + capture + ')';

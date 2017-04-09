@@ -111,6 +111,8 @@ class Book extends Model {
 
     public function deleteRow() {
         $this->delete();
+
+        return response()->json(['type' => 'bookDeleteSuccess'], config('httpStatus.success'));
     }
 
     public function user() {

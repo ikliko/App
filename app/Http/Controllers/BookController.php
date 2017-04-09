@@ -34,8 +34,8 @@ class BookController extends Controller {
     }
 
     public function delete(Book $book) {
-        $book->deleteRow();
+        $response = $book->deleteRow();
 
-        return response()->json('bookDeleteSuccess', config('httpStatus.success'));
+        return $response;
     }
 }
